@@ -4,23 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
+    <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
     <!--HEADER-->
     <header>
+        <div id="navbar">
         <div id="logo">
             <img src="" alt="">
         </div>
-        <ul id="nav">
-            <li>Home</li>
-            <li>About</li>
-            <li>Skills</li>
-            <li>Projects</li>
-            <li>Acheivements</li>
-            <li>Certifications</li>
-            <li>Contact</li>
+        <ul id="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#highlights">Highlights</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
         <button id="menu-btn"></button>
+        </div>
     </header>
     <!--MAIN-->
     <main>
@@ -30,10 +34,10 @@
             <h1>SENTHAMIZH SELVI I</h1>
             <p>Computer Science Student | MERN Stack Developer</p>
             <p>Turning Ideas Into Functional Web Experiences Through Thoughtful, User-Centered Problem Solving.</p>
-            <img src="" alt="" id="my-img">
-            <button id="resume-btn">Download Resume</button>
-            <button id="github-btn">GitHub</button>
-            <button id="linkedin-btn">Linkedin</button>
+            <img src="profile.png" alt="" id="profile-img">
+            <a href="resume/Senthamizh_Selvi_Resume.pdf" download="Senthamizh_Selvi_Resume.pdf" id="resume-link"><i class="fa-solid fa-download"></i>Download Resume</a>
+            <a href="https://github.com/Senthamizh-Selvi18" id="github-link"><i class="fa-brands fa-github"></i>GitHub</a>
+            <a href="https://linkedin.com/in/senthamizh-selvi-i-298451359" id="linkedin-link"><i class="fa-brands fa-linkedin"></i>linkedin</a>
         </section>
         <!--ABOUT-->
         <section id="about">
@@ -44,14 +48,14 @@
                 <li>BE Computer Science <span>2024-2028</span></li>
                 <li>Jerusalem College of Engineering <span>Chennai,India</span></li>
                 <li>CGPA:9.40/10 <span>(Till 3rd Semester)</span></li>
-                <li>Mother Matriculation Higher Secondary School <span>Percentage:88.83%</span></li>
+                <li>Languages known: Tamil,English</li>
             </ul>
         </section>
         <!--SKILLS-->
         <section id="skills">
             <h2>Skills</h2>
-            <div id="languages">
-                <h2>Languages</h2>
+            <div class="skill-card" id="languages">
+                <h3>Languages</h3>
                 <ul>
                     <li>Java</li>
                     <li>Python</li>
@@ -60,77 +64,71 @@
                     <li>javaScript</li>
                 </ul>
             </div>
-            <div id="frontend">
-                <h2>Frontend</h2>
+            <div class="skill-card" id="frontend">
+                <h3>Frontend</h3>
                 <ul>
                     <li>HTML</li>
                     <li>CSS</li>
                     <li>React.js</li>
                 </ul>
             </div>
-            <div id="backend">
-                <h2>Backend</h2>
+            <div class="skill-card" id="backend">
+                <h3>Backend</h3>
                 <ul>
                     <li>Node.js</li>
                     <li>Express.js</li>
                 </ul>
             </div>
-            <div id="database">
-                <h2>Database</h2>
+            <div class="skill-card" id="database">
+                <h3>Database</h3>
                 <ul>
                     <li>MySQL</li>
                     <li>MongoDB</li>
                 </ul>
             </div>
-            <div id="tools">
-                <h2>Tools</h2>
+            <div class="skill-card" id="tools">
+                <h3>Tools</h3>
                 <ul>
                     <li>Git</li>
                     <li>GitHub</li>
                     <li>VS Code</li>
                 </ul>
             </div>
-            <div id="languages-known">
-                <h2>Languages-Known</h2>
-                <ul>
-                    <li>Tamil</li>
-                    <li>English</li>
-                </ul>
-            </div>
         </section>
         <!--PROJECTS-->
         <section id="projects">
             <h2>Projects</h2>
-            <article class="projects-card">
-                <img src="" alt="">
+            <article class="project-card">
                 <h3>AquaVision</h3>
+                <img src="aquavision.jpeg" alt="">
                 <p>An AI-powered web application that analyzes multispectral image data to assess water quality indicators such as turbidity and pollution levels. 
                 Built to explore how data-driven technologies can support environmental monitoring and informed decision-making.</p>
-                <a href="">GitHub</a>
+                <a href="https://github.com/Senthamizh-Selvi18/AquaVision"><i class="fa-brands fa-github"></i>GitHub</a>
             </article>
-            <article class="projects-card">
-                <img src="" alt="">
+            <article class="project-card">
                 <h3>Construction Company Landing Page</h3>
+                <img src="construction-page.jpeg" alt="">
                 <p>A responsive landing page designed to present construction services with a clean layout and intuitive navigation. 
                 Focused on creating a professional user experience across desktop and mobile devices.</p>
-                <a href="">GitHub</a>
+                <a href="https://github.com/Senthamizh-Selvi18/constructioncompany-landing-page"><i class="fa-brands fa-github"></i>GitHub</a>
             </article>
-            <article class="projects-card">
-                <img src="" alt="">
+            <article class="project-card">
                 <h3>AloeWorld Website</h3>
+                <img src="aloeworld.jpeg" alt="">
                 <p>A responsive e-commerce interface for a natural skincare brand, designed to showcase products through a simple and user-friendly shopping experience.
                 Emphasizes clean design, accessibility, and organized content presentation.</p>
-                <a href="">GitHub</a>
+                <a href="https://github.com/Senthamizh-Selvi18/Aloe-World"><i class="fa-brands fa-github"></i>GitHub</a>
             </article>
-            <article class="projects-card">
-                <img src="" alt="">
+            <article class="project-card">
                 <h3>Coding Practice</h3>
+                <img src="coding-practice.jpeg" alt="">
                 <p>A curated collection of algorithm and data structure solutions developed through regular coding practice.
                  Focused on strengthening logical thinking, problem-solving, and core programming fundamentals.</p>
-                <a href="">GitHub</a>
+                <a href="https://github.com/Senthamizh-Selvi18/DSA-NEXTSTEP"><i class="fa-brands fa-github"></i>GitHub</a>
             </article>
             </section>
             <section id="highlights">
+                <h2>Highlights</h2>
                 <div class="highlight-card">
                     <h3>Infosys Springboard Virtual Internship 7.0 (Current)</h3>
                     <p>Selected for the Java Technology Stack virtual internship.</p>
@@ -154,6 +152,7 @@
             </section>
             <!--CERTIFICATIONS-->
             <section id="certifications">
+                <h2>Certifications</h2>
                 <div class="certification-card">
                     <h3>Diploma in Computer Application</h3>
                     <p>Nimbus Computer Centre <span>May 2024-August 2024</span></p>
@@ -166,29 +165,32 @@
             <!--CONTACT-->
             <section id="contact">
                 <h2>Contact</h2>
-                <p></p>
-                <a href="">
-                    <img src="" alt="" id="linkedin">
-                </a>
-                <a href="">
-                    <img src="" alt="" id="github">
-                </a>
-                <a href="">
-                    <img src="" alt="" id="email">
-                </a>
-                <a href="">
-                    <img src="" alt="" id="location">
-                </a>
+                <p>Have an idea or opportunity? I'd be happy to connect.</p>
+                <div id="contact-form">
+                    <form action="">
+                        <label for="name">
+                            <input type="text" id="name" placeholder="Input your name....">
+                        </label>
+                        <label for="email">
+                            <input type="email" id="email" placeholder="Input your Email ID.....">
+                        </label>
+                        <textarea placeholder="How can I help you?"></textarea>
+                        <button type="submit">Send me</button>
+                        
+                    </form>
+                </div>
+                <div id="contact-link">
+                   <a href="https://linkedin.com/in/senthamizh-selvi-i-298451359"><i class="fa-brands fa-linkedin"></i></a>
+                   <a href="https://github.com/Senthamizh-Selvi18"><i class="fa-brands fa-github"></i></a>
+                   <a href="mailto:senthamizhselviiyappan@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+                   <p><i class="fa-solid fa-location-dot"></i>Chennai, India</p>
+                </div>
             </section>
-            <button id="back-to-top"></button>
+            <button id="back-to-top"><i class="fa-solid fa-arrow-up"></i></button>
+            <!--FOOTER-->
             <footer>
                 <p>@ 2026 Senthamizh Selvi I. All rights reserved</p>
             </footer>
-
-        
-
-    </main>
-
-    
+    </main>    
 </body>
 </html>
