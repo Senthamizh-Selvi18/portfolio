@@ -1,9 +1,17 @@
-/*========Variables=======*/
+/* ================================================================
+   PORTFOLIO — style.css
+   Theme: Deep space dark + purple/cyan neon
+   ================================================================ */
 
+/* ────────────────────────────────────────────────────────────────
+   1. DESIGN TOKENS
+   ──────────────────────────────────────────────────────────────── */
 :root {
     --bg:           #040b18;
+    
     --bg-glass:     rgba(255,255,255,0.04);
     --bg-glass-h:   rgba(139,92,246,0.08);
+
     --purple:       #7c3aed;
     --purple-mid:   #8b5cf6;
     --purple-light: #a78bfa;
@@ -11,16 +19,23 @@
     --text:         #f1f5f9;
     --text-sub:     #94a3b8;
     --text-muted:   #64748b;
+
     --border:       rgba(139,92,246,0.18);
     --border-h:     rgba(139,92,246,0.50);
+
     --glow-p:  0 0 24px rgba(139,92,246,0.4);
     --glow-c:  0 0 24px rgba(34,211,238,0.4);
+
     --font:    'Space Grotesk', sans-serif;
     --mono:    'Fira Code', monospace;
+
     --ease-out:    cubic-bezier(0.22,1,0.36,1);
     --ease-spring: cubic-bezier(0.34,1.56,0.64,1);
 }
 
+/* ────────────────────────────────────────────────────────────────
+   2. GLOBAL RESET
+   ──────────────────────────────────────────────────────────────── */
 *, *::before, *::after {
     margin: 0; padding: 0;
     box-sizing: border-box;
@@ -42,16 +57,24 @@ body {
             rgba(124,58,237,0.10) 0%, transparent 65%);
 }
 
-/* SCROLLBAR */
+
+/* ────────────────────────────────────────────────────────────────
+   4. SCROLLBAR
+   ──────────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar          { width: 5px; }
 ::-webkit-scrollbar-track    { background: var(--bg); }
 ::-webkit-scrollbar-thumb    { background: var(--purple); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--purple-light); }
 
-/* SELECTION */
+/* ────────────────────────────────────────────────────────────────
+   5. SELECTION
+   ──────────────────────────────────────────────────────────────── */
 ::selection { background: rgba(139,92,246,0.35); color: var(--text); }
 
-/* SCROLL-REVEAL BASELINE */
+/* ────────────────────────────────────────────────────────────────
+   6. SCROLL-REVEAL BASELINE
+   JS adds .reveal-show to sections and .child-show to card children.
+   ──────────────────────────────────────────────────────────────── */
 section {
     opacity: 0;
     transform: translateY(44px);
@@ -63,7 +86,7 @@ section.reveal-show {
     transform: translateY(0);
 }
 
-/* Child cards */
+/* Child cards start hidden; transition-delay added by JS */
 .about-card,
 .highlight-card,
 .certification-card,
@@ -81,7 +104,7 @@ section.reveal-show {
     transform: translateY(0) scale(1) !important;
 }
 
-/* Skill items entrance */
+/* Skill items: wave stagger entrance */
 
 .skill-item.skill-show {
     opacity: 1;
@@ -103,9 +126,9 @@ section > h2,
     display: inline-block;
     margin-bottom: 40px;
 }
-/* Glitch data */
+/* Glitch data-text attribute used for ::before/::after */
 h2[data-text] { position: relative; }
-.glitch-name:hover::before, .glitch-name.glitch-active::before {
+.glitch-name:hover::before {
     content: attr(data-text);
     position: absolute; inset: 0;
     -webkit-text-fill-color: var(--cyan);
@@ -113,7 +136,7 @@ h2[data-text] { position: relative; }
     transform: translateX(-3px);
     animation: glitch-a 0.35s steps(2) forwards;
 }
-.glitch-name:hover::after, .glitch-name.glitch-active::after {
+.glitch-name:hover::after {
     content: attr(data-text);
     position: absolute; inset: 0;
     -webkit-text-fill-color: var(--purple-light);
@@ -154,8 +177,8 @@ h2[data-text] { position: relative; }
 
 #navbar.scrolled {
     background: rgba(4,11,24,0.88);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     box-shadow: 0 1px 0 var(--border), 0 4px 30px rgba(0,0,0,0.3);
     padding-top: 14px;
     padding-bottom: 14px;
@@ -197,7 +220,7 @@ h2[data-text] { position: relative; }
     transition: color 0.2s;
 }
 
-/* Underline animation */
+/* Underline sweep animation on nav links */
 #nav-links a::after {
     content: '';
     position: absolute;
@@ -211,7 +234,7 @@ h2[data-text] { position: relative; }
 #nav-links a:hover { color: var(--text); }
 #nav-links a:hover::after { width: 100%; }
 
-/* ── Menu btn ── */
+/* ── Hamburger ── */
 #menu-btn {
     display: none;
     background: none;
@@ -237,21 +260,17 @@ h2[data-text] { position: relative; }
     align-items: center;
     min-height: 92vh;
     padding: 50px 60px;
-    gap: 60px;
+    gap: 40px;
     position: relative;
     overflow: hidden;
+    /* Override section reveal — hero is always visible on load */
     opacity: 1 !important;
     transform: none !important;
 }
 
-/* Aurora Animation */
-.aurora { 
-    position: absolute; 
-    inset: 0; 
-    z-index: 0; 
-    pointer-events: none; 
-    overflow: hidden; 
-}
+/* ── Aurora blobs ── */
+.aurora { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+
 .aurora-blob {
     position: absolute;
     border-radius: 50%;
@@ -278,11 +297,13 @@ h2[data-text] { position: relative; }
     animation-delay: -9s;
     opacity: 0.15;
 }
+
 @keyframes auroraFloat {
     0%,100%{ transform: translate(0,0) scale(1); }
     33%    { transform: translate(30px,-20px) scale(1.08); }
     66%    { transform: translate(-20px,15px) scale(0.95); }
 }
+
 /* ── Particle canvas ── */
 #hero-canvas {
     position: absolute; inset: 0;
@@ -311,7 +332,7 @@ h2[data-text] { position: relative; }
     animation: slideInLeft 0.7s 0.1s var(--ease-out) both;
 }
 
-/* Decorative line */
+/* Decorative line before greeting */
 .greeting-line {
     display: inline-block;
     width: 36px; height: 1.5px;
@@ -319,7 +340,7 @@ h2[data-text] { position: relative; }
     vertical-align: middle;
 }
 
-/* HERO NAME */
+/* ── HERO NAME — highlighted & elegant ── */
 #hero-name {
     font-family: 'Plus Jakarta Sans',sans-serif;
     display: flex;
@@ -330,20 +351,21 @@ h2[data-text] { position: relative; }
     margin-bottom: 16px;
     animation: slideInLeft 0.7s 0.2s var(--ease-out) both;
 }
+
 .name-line {
     font-size: clamp(1.9rem, 4vw, 3.4rem);
     font-weight: 900;
     white-space: nowrap;
     line-height: 1.05;
     letter-spacing: 4px;
-    /* White gradient */
+    /* White gradient on first line */
     background: linear-gradient(120deg, #ffffff 0%, #e2d9f3 60%, var(--purple-light) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
-/* purple-cyan shimmer */
+/* Second line "SELVI I" — purple-cyan shimmer */
 .name-line.accent {
     background: linear-gradient(120deg,
         var(--purple-light) 0%,
@@ -355,8 +377,10 @@ h2[data-text] { position: relative; }
     -webkit-text-fill-color: transparent;
     background-clip: text;
     animation: nameShimmer 5s linear infinite;
+    /* Subtle text glow using drop-shadow filter */
     filter: drop-shadow(0 0 20px rgba(139,92,246,0.45));
 }
+
 @keyframes nameShimmer {
     0%  { background-position: 0% 50%; }
     100%{ background-position: 250% 50%; }
@@ -371,6 +395,7 @@ h2[data-text] { position: relative; }
     color: #38bdf8;
     font-weight: 600;
 }
+
 .home-desc {
     color: rgba(255, 255, 255, 0.85);
     opacity: 0.9;
@@ -389,6 +414,7 @@ h2[data-text] { position: relative; }
     flex-wrap: wrap;
     animation: slideInLeft 0.7s 0.5s var(--ease-out) both;
 }
+
 .home-buttons a {
     text-decoration: none;
     padding: 12px 24px;
@@ -404,7 +430,7 @@ h2[data-text] { position: relative; }
     overflow: hidden;
 }
 
-/* Ripple sweep on hover */
+/* Ripple sweep on button hover */
 .home-buttons a::before {
     content: '';
     position: absolute; inset: 0;
@@ -413,9 +439,8 @@ h2[data-text] { position: relative; }
     transform: translateX(-100%);
     transition: transform 0.5s ease;
 }
-.home-buttons a:hover::before {
-     transform: translateX(100%);
-}
+.home-buttons a:hover::before { transform: translateX(100%); }
+
 #resume-link {
     background: linear-gradient(135deg, var(--purple), var(--purple-light));
     color: #fff;
@@ -425,6 +450,7 @@ h2[data-text] { position: relative; }
     transform: translateY(-3px) scale(1.03);
     box-shadow: 0 8px 28px rgba(124,58,237,0.65);
 }
+
 #github-link, #linkedin-link {
     background: transparent;
     border: 1.5px solid var(--border);
@@ -449,31 +475,33 @@ h2[data-text] { position: relative; }
     animation: slideInRight 0.9s 0.2s var(--ease-out) both;
 }
 
-/*glow behind profile image */
+/* Subtle glow behind profile image */
 .home-image::before {
     content: '';
     position: absolute;
-    width: 550px; height: 550px;
+    width: 320px; height: 320px;
     border-radius: 50%;
     background: radial-gradient(circle,
         rgba(139,92,246,0.18) 0%,
         rgba(34,211,238,0.06) 55%,
         transparent 72%);
-    filter: blur(20px);
+    filter: blur(32px);
     z-index: 0;
     pointer-events: none;
 }
 
 #profile-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    object-fit: contain;
-    transform: translateY(-50px);
-    filter: drop-shadow(0 0 25px rgba(34,211,238,0.25));
+    width: 295px; max-width: 100%;
+    border-radius: 50%;
+    border: 3px solid rgba(139,92,246,0.4);
+    box-shadow: 0 0 40px rgba(139,92,246,0.3),
+                0 0 80px rgba(34,211,238,0.08);
+    background: linear-gradient(135deg, #0f1a35, #1a0a3a);
+    object-fit: cover;
+    position: relative; z-index: 2;
 }
 
-/* Floating badges */
+/* Floating code badges */
 .float-badge {
     pointer-events: none;
     position: absolute;
@@ -489,18 +517,18 @@ h2[data-text] { position: relative; }
     user-select: none;
 }
 .badge-tl {
-    top: 18%; right: 15%;
+    top: 20%; right: 4%;
     color: var(--purple-light);
     animation: badgeFloat 4s ease-in-out infinite;
 }
 .badge-br {
-    bottom: 25%; left: 10%;
+    bottom: 20%; left: 4%;
     color: var(--cyan);
     border-color: rgba(34,211,238,0.25);
     animation: badgeFloat 4s 1.2s ease-in-out infinite;
 }
 
-
+/* ── Keyframes ── */
 @keyframes badgeFloat {
     0%,100%{ transform: translateY(0) rotate(-2deg); }
     50%    { transform: translateY(-10px) rotate(2deg); }
@@ -515,7 +543,7 @@ h2[data-text] { position: relative; }
 }
 
 /* ────────────────────────────────────────────────────────────────
-                           ABOUT SECTION 
+   10. ABOUT SECTION — LEFT: text | RIGHT: cards
    ──────────────────────────────────────────────────────────────── */
 #about {
     padding: 100px 60px;
@@ -530,14 +558,16 @@ h2[data-text] { position: relative; }
     align-items: start;
 }
 
-/* SENTHAMIZH highlighted */
+/* About heading — "SENTHAMIZH" highlighted */
 #about h2 .name-accent {
     font-family: var(--mono);
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-size: 1.05em;
     background: linear-gradient(120deg, var(--cyan), var(--purple-light));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    letter-spacing: 3px;
 }
 
 #about h2       { grid-area: heading; margin-bottom: 44px; }
@@ -577,12 +607,14 @@ h2[data-text] { position: relative; }
 .about-card span { font-size: 0.82rem; color: var(--text-muted); }
 
 /* ────────────────────────────────────────────────────────────────
-                         SKILLS SECTION
+   11. SKILLS SECTION
    ──────────────────────────────────────────────────────────────── */
 #skills {
     padding: 100px 60px 40px;
-    padding-top: 40px !important;   
-}  
+    padding-top: 40px !important;   /* instead of 100px */
+}  /* top right/left bottom */
+
+
 #skills > h2 { margin-bottom: 48px; }
 
 .skill-category {
@@ -607,6 +639,7 @@ h2[data-text] { position: relative; }
     text-transform: uppercase;
     margin-bottom: 14px;
 }
+
 /* Colored dot before category */
 .cat-dot {
     display: inline-block;
@@ -616,6 +649,7 @@ h2[data-text] { position: relative; }
     box-shadow: 0 0 8px rgba(139,92,246,0.7);
     flex-shrink: 0;
 }
+
 /* Decorative line after label */
 .skill-category h3::after {
     content: '';
@@ -624,13 +658,15 @@ h2[data-text] { position: relative; }
     background: linear-gradient(90deg, var(--border), transparent);
     max-width: 200px;
 }
-/* Skill items */
+
+/* Skill items — flex row, wraps left to right */
 .skill-list {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     gap: 10px;
 }
+
 .skill-item {
     padding: 9px 20px;
     border: 1.5px solid var(--border);
@@ -651,7 +687,7 @@ h2[data-text] { position: relative; }
                 box-shadow 0.25s ease;
 }
 
-/* Gradient on hover */
+/* Gradient fill appears on hover */
 .skill-item::after {
     content: '';
     position: absolute; inset: 0;
@@ -668,16 +704,15 @@ h2[data-text] { position: relative; }
 .skill-item:hover::after { opacity: 1; }
 
 /* ────────────────────────────────────────────────────────────────
-                       PROJECTS SECTION
+   12. PROJECTS SECTION
    ──────────────────────────────────────────────────────────────── */
 #projects {
     padding: 40px 60px 0;
-    opacity: 1 !important; 
-    transform: none !important;
+    /* Nested section — override parent reveal */
+    opacity: 1 !important; transform: none !important;
 }
-#projects h2 { 
-    margin-bottom: 36px;
-}
+#projects h2 { margin-bottom: 36px; }
+
 .project-card {
     display: flex;
     align-items: center;
@@ -688,6 +723,14 @@ h2[data-text] { position: relative; }
     background: var(--bg-glass);
     border: 1px solid var(--border);    
 }
+
+
+
+
+
+
+
+
 .project-card img {
     width: 255px; height: 165px;
     object-fit: cover;
@@ -699,14 +742,20 @@ h2[data-text] { position: relative; }
 }
 .project-card:hover {
     transform: translateY(-4px);
+
     background: rgba(139, 92, 246, 0.12);
+
     border: 1px solid rgba(167, 139, 250, 0.35);
+
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+
     box-shadow:
         0 0px 32px rgba(139, 92, 246, 0.25),
         0 0 20px rgba(167, 139, 250, 0.15);
 }
+  
+
 .project-content { display: flex; flex-direction: column; gap: 6px; }
 .project-content h3 { font-size: 1.12rem; }
 .project-content p  { color: var(--text-sub); font-size: 0.93rem; line-height: 1.75; }
@@ -734,19 +783,20 @@ h2[data-text] { position: relative; }
 }
 
 /* ────────────────────────────────────────────────────────────────
-                      HIGHLIGHTS SECTION
+   13. HIGHLIGHTS SECTION
    ──────────────────────────────────────────────────────────────── */
 #highlights {
     padding: 80px 60px 0;
-    opacity: 1 !important; 
-    transform: none !important;
+    opacity: 1 !important; transform: none !important;
 }
 #highlights h2 { margin-bottom: 36px; }
+
 .highlights-container {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
 }
+
 .highlight-card {
     flex: 1 1 270px;
     min-width: 250px;
@@ -758,6 +808,8 @@ h2[data-text] { position: relative; }
     overflow: hidden;
     cursor: default;
 }
+
+/* Animated neon left-bar */
 .highlight-card::before {
     content: '';
     position: absolute;
@@ -778,12 +830,11 @@ h2[data-text] { position: relative; }
 .highlight-card p  { color: var(--text-sub); font-size: 0.9rem; line-height: 1.65; }
 
 /* ────────────────────────────────────────────────────────────────
-                       CERTIFICATIONS
+   14. CERTIFICATIONS
    ──────────────────────────────────────────────────────────────── */
 #certifications {
     padding: 80px 60px 0;
-    opacity: 1 !important;  
-    transform: none !important;
+    opacity: 1 !important; transform: none !important;
 }
 #certifications h2 { margin-bottom: 36px; }
 
@@ -812,7 +863,7 @@ h2[data-text] { position: relative; }
     color: var(--text-muted); font-size: 0.83rem; white-space: nowrap; }
 
 /* ────────────────────────────────────────────────────────────────
-                           CONTACT
+   15. CONTACT
    ──────────────────────────────────────────────────────────────── */
 #contact {
     padding: 80px 60px 0;
@@ -922,13 +973,15 @@ h2[data-text] { position: relative; }
 }
 
 /* ────────────────────────────────────────────────────────────────
-                         BACK TO TOP
+   16. BACK TO TOP — always visible once scrolled
    ──────────────────────────────────────────────────────────────── */
 #back-to-top {
     position: fixed;
     top: 50%;
     right: 20px;
-    transform: translateY(-50%);   
+    transform: translateY(-50%);
+  
+   
     width: 48px;
     height: 48px;
     border: 1.5px solid var(--border-h);
@@ -943,7 +996,8 @@ h2[data-text] { position: relative; }
     z-index: 99999;
     box-shadow: var(--glow-p);
     transition: background 0.3s, box-shadow 0.3s, transform 0.3s var(--ease-spring);
-    animation: btnPulse 2.5s ease-in-out infinite;
+    /* Pulsing ring animation */
+    animation: bttPulse 2.5s ease-in-out infinite;
 }
 #back-to-top:hover {
     background: rgba(139,92,246,0.35);
@@ -951,13 +1005,13 @@ h2[data-text] { position: relative; }
     box-shadow: 0 0 30px rgba(139,92,246,0.6);
     animation: none;
 }
-@keyframes btnPulse {
+@keyframes bttPulse {
     0%,100%{ box-shadow: 0 0 0 0 rgba(139,92,246,0.5); }
     50%    { box-shadow: 0 0 0 8px rgba(139,92,246,0); }
 }
 
 /* ────────────────────────────────────────────────────────────────
-                           FOOTER 
+   17. FOOTER  (no quick links)
    ──────────────────────────────────────────────────────────────── */
 footer {
     padding: 28px 60px;
@@ -972,7 +1026,7 @@ footer {
 }
 
 /* ────────────────────────────────────────────────────────────────
-                         RESPONSIVE
+   18. RESPONSIVE
    ──────────────────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
     #about {
@@ -993,7 +1047,7 @@ footer {
         position: absolute;
         top: calc(100% + 10px); left: 0; right: 0;
         background: rgba(4,11,24,0.97);
-        backdrop-filter: blur(15px);
+        backdrop-filter: blur(20px);
         flex-direction: column;
         gap: 0;
         border: 1px solid var(--border);
@@ -1007,7 +1061,6 @@ footer {
 
     /* ── Home ── */
     #home {
-        
         flex-direction: column-reverse;
         text-align: center;
         padding: 40px 24px 60px;
@@ -1019,20 +1072,7 @@ footer {
     .home-desc { margin: 0 auto; text-align: center; }
     .home-greeting { justify-content: center; }
     #hero-name::after { margin: 10px auto 0; }
-    #profile-img { width: 380px; }
-    .badge-tl {
-    top: 12%;
-    right: 10%;
-    font-size: 0.75rem;
-    padding: 6px 10px;
-}
-
-    .badge-br {
-    bottom: 18%;
-    left: 10%;
-    font-size: 0.75rem;
-    padding: 6px 10px;
-}
+    #profile-img { width: 210px; }
 
     /* ── About ── */
     #about { padding: 60px 24px; }

@@ -5,26 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Senthamizh Selvi I — Portfolio</title>
 
-    <!-- Fonts -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800&display=swap" rel="stylesheet">
     
-    <!-- Icons -->
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
+    <!-- Portfolio Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- ====== HEADER ====== -->
     <header>
         <nav id="navbar">
-            <!-- Logo -->
+
+            <!-- Logo: text only -->
             <div id="logo">
                 <span class="logo-text">Senthamizh</span>
             </div>
-            <!-- Navlinks -->
+
             <ul id="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -41,19 +45,19 @@
         </nav>
     </header>
 
+    <!-- ====== MAIN ====== -->
     <main>
 
-
-        <!-------- Home --------->
+        <!-- ====== HOME ====== -->
         <section id="home">
-            <!-- Animated background -->
+            <!-- Animated aurora background -->
             <div class="aurora" aria-hidden="true">
                 <div class="aurora-blob blob-1"></div>
                 <div class="aurora-blob blob-2"></div>
                 <div class="aurora-blob blob-3"></div>
             </div>
 
-            <!-- Particle overlay -->
+            <!-- Particle canvas overlay -->
             <canvas id="hero-canvas" aria-hidden="true"></canvas>
 
             <div class="home-content">
@@ -61,6 +65,7 @@
                     <span class="greeting-line"></span>
                     Hi, I'm
                 </p>
+                <!-- Highlighted hero name with shimmer sweep -->
                 <h1 id="hero-name">
                     <span class="name-line">SENTHAMIZH</span>
                     <span class="name-line accent">SELVI I</span>
@@ -86,15 +91,18 @@
             </div>
 
             <div class="home-image">
-               <img src="images/profile.png" alt="Senthamizh Selvi" id="profile-img">
-               <span class="float-badge badge-tl">&lt;/&gt;</span>
-               <span class="float-badge badge-br">{...}</span>
+                <!-- Add your photo at public/images/profile.png -->
+                <img src="images/profile.png" alt="Senthamizh Selvi" id="profile-img">
+                <!-- Floating decorative badges -->
+                <span class="float-badge badge-tl">&lt;/&gt;</span>
+                <span class="float-badge badge-br">{...}</span>
             </div>
         </section>
 
-        <!--------- ABOUT ---------->
+        <!-- ====== ABOUT ====== -->
         <section id="about">
             <h2>About <span class="name-accent glitch-name" data-text="SENTHAMIZH">SENTHAMIZH</span></h2>
+            <!-- Left: paragraph | Right: grid cards (CSS Grid areas) -->
             <p>
                 I'm a third-year Computer Science student who sees software
                 development as understanding problems before building solutions.
@@ -126,7 +134,7 @@
             </div>
         </section>
 
-        <!---------- SKILLS --------->
+        <!-- ====== SKILLS ====== -->
         <section id="skills">
             <h2>Skills</h2>
 
@@ -144,8 +152,8 @@
             <div class="skill-category">
                 <h3><span class="cat-dot"></span>Frontend</h3>
                 <div class="skill-list">
-                    <div class="skill-item">HTML5</div>
-                    <div class="skill-item">CSS3</div>
+                    <div class="skill-item">HTML</div>
+                    <div class="skill-item">CSS</div>
                     <div class="skill-item">React</div>
                 </div>
             </div>
@@ -154,15 +162,15 @@
                 <h3><span class="cat-dot"></span>Backend</h3>
                 <div class="skill-list">
                     <div class="skill-item">Node.js</div>
-                    <div class="skill-item">Express.js</div>
+                    <div class="skill-item">Express</div>
                 </div>
             </div>
 
             <div class="skill-category">
                 <h3><span class="cat-dot"></span>Database</h3>
                 <div class="skill-list">
-                    <div class="skill-item">MongoDB</div>
                     <div class="skill-item">MySQL</div>
+                    <div class="skill-item">MongoDB</div>
                 </div>
             </div>
 
@@ -176,7 +184,7 @@
             </div>
         </section>
 
-            <!------------ PROJECTS ------------->
+            <!-- ====== PROJECTS (nested per original HTML structure) ====== -->
             <section id="projects">
                 <h2>Projects</h2>
 
@@ -233,7 +241,7 @@
                 </article>
             </section>
 
-            <!---------- HIGHLIGHTS ---------->
+            <!-- ====== HIGHLIGHTS ====== -->
             <section id="highlights">
                 <h2>Highlights</h2>
                 <div class="highlights-container">
@@ -260,7 +268,7 @@
                 </div>
             </section>
 
-            <!----------- CERTIFICATIONS ------------>
+            <!-- ====== CERTIFICATIONS ====== -->
             <section id="certifications">
                 <h2>Certifications</h2>
                 <div class="certification-card">
@@ -269,32 +277,27 @@
                 </div>
                 <div class="certification-card">
                     <h3>Diploma in MERN Stack Development</h3>
-                    <p>Nimbus Computer Centre <span>September 2024 - December 2024 </span></p>
-                </div>
-                <div class="certification-card">
-                    <h3>Website UI/UX Designing using ChatGPT</h3>
-                    <p>Simplilearn <span>April 2025</span></p>
-                </div>
-                <div class="certification-card">
-                    <h3>CodSoft Web Development Internship</h3>
-                    <p>Infosys Springboard <span>01/07/2025 - 31/01/2025</span></p>
+                    <p>Nimbus Computer Centre</p>
                 </div>
                 <div class="certification-card">
                     <h3>Infosys Data Structures and Algorithms Certification</h3>
-                    <p>Infosys Springboard <span>April 2026</span></p>
+                    <p>Infosys Springboard</p>
                 </div>
-                
+                <div class="certification-card">
+                    <h3>Website UI/UX Designing using ChatGPT</h3>
+                    <p>Simplilearn</p>
+                </div>
             </section>
 
-            <!----------- CONTACT ------------>
+            <!-- ====== CONTACT ====== -->
             <section id="contact">
                 <h2>Contact</h2>
                 <p>Have an idea or opportunity? I'd be happy to connect.</p>
                 <div id="contact-form">
-                    <form id="contact-form-email" action="https://formspree.io/f/mgobbyag" method="POST">
+                    <form action="">
                         <input type="text" name="name" id="name" placeholder="Enter your name">
                         <input type="email" name="email" id="email" placeholder="Enter your Email ID">
-                        <textarea name="message" placeholder="How can I help you?" id="message"></textarea>
+                        <textarea name="message" placeholder="How can I help you?"></textarea>
                         <button type="submit">Send Message</button>
                     </form>
                 </div>
@@ -312,24 +315,21 @@
                 </div>
             </section>
 
-            <!-- Back-to-top btn -->
+            <!-- Back-to-top (inside skills as per original structure) -->
             <button id="back-to-top" aria-label="Back to top">
                 <i class="fa-solid fa-arrow-up"></i>
             </button>
 
-            <!------------ FOOTER -------------->
+            <!-- ====== FOOTER ====== -->
             <footer>
+                <!-- Dynamic year updated by JS -->
                 <p class="copyright">© <span id="footer-year"></span> Senthamizh Selvi I. All rights reserved</p>
             </footer>
+
+        
     </main>
+
+    <!-- Portfolio Script (defer keeps HTML parsing fast) -->
     <script src="script.js" defer></script>
 </body>
 </html>
-
-
-
-
-
-
-
-

@@ -1,9 +1,20 @@
+/* ================================================================
+   PORTFOLIO — script.js
+   Creative animations, interactions & utilities
+   ================================================================ */
+
 /* ────────────────────────────────────────────────────────────────
-                    HERO PARTICLE CANVAS
+   1. HERO PARTICLE CANVAS
+   Floating dots connected by purple lines when nearby.
    ──────────────────────────────────────────────────────────────── */
 (function initParticles() {
     const canvas = document.getElementById('hero-canvas');
     if (!canvas) return;
+    // Disable particle animation on mobile devices
+    if (window.innerWidth <= 768) {
+      canvas.style.display = "none";
+      return;
+    }
     const ctx = canvas.getContext('2d');
 
     function resize() {
@@ -13,7 +24,8 @@
     resize();
     window.addEventListener('resize', resize);
 
-    const COUNT = 35;
+    
+    const COUNT = 45;
     const particles = Array.from({ length: COUNT }, () => ({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
@@ -37,7 +49,7 @@
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         particles.forEach((p,i)=> {
-            /* Mouse */
+            /* Mouse repulsion — subtle */
             const dx = p.x - mouseX;
             const dy = p.y - mouseY;
             const dist = Math.hypot(dx, dy);
@@ -47,13 +59,13 @@
                 p.y += (dy / dist) * force;
             }
 
-            /* dot */
+            /* Draw dot */
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
             ctx.fillStyle = `rgba(139,92,246,${p.alpha})`;
             ctx.fill();
 
-            /* Connect particles */
+            /* Connect nearby particles */
             for (let j = i + 1; j < particles.length; j++) {
             const q = particles[j];
             const d = Math.hypot(p.x - q.x, p.y - q.y);
@@ -80,7 +92,12 @@
 
 
 /* ────────────────────────────────────────────────────────────────
-                        MOBILE MENU TOGGLE
+   3. NAVBAR — frosted glass on scroll
+   ──────────────────────────────────────────────────────────────── */
+   
+
+/* ────────────────────────────────────────────────────────────────
+   4. MOBILE MENU TOGGLE
    ──────────────────────────────────────────────────────────────── */
 (function initMobileMenu() {
     const btn   = document.getElementById('menu-btn');
@@ -89,7 +106,7 @@
 
     btn.addEventListener('click', () => links.classList.toggle('active'));
 
-    /* Close menu when link is clicked */
+    /* Close menu when any nav link is clicked */
     links.querySelectorAll('a').forEach(a =>
         a.addEventListener('click', () => links.classList.remove('active'))
     );
@@ -97,7 +114,7 @@
 
 
 /* ────────────────────────────────────────────────────────────────
-                SMOOTH SCROLL for all anchor links
+   5. SMOOTH SCROLL for all anchor links
    ──────────────────────────────────────────────────────────────── */
 (function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(link => {
@@ -111,7 +128,8 @@
 
 
 /* ────────────────────────────────────────────────────────────────
-                           BACK TO TOP
+   6. BACK TO TOP
+   Shows after 100 px of scroll (visible on virtually every page).
    ──────────────────────────────────────────────────────────────── */
    (function initScrollUI() {
 
@@ -151,8 +169,12 @@
 
 })();
 
+
+
+
+
 /* ────────────────────────────────────────────────────────────────
-                    DYNAMIC FOOTER YEAR
+   7. DYNAMIC FOOTER YEAR
    ──────────────────────────────────────────────────────────────── */
 (function initYear() {
     const el = document.getElementById('footer-year');
@@ -161,7 +183,8 @@
 
 
 /* ────────────────────────────────────────────────────────────────
-                         SCROLL REVEAL 
+   8. SCROLL REVEAL with staggered children
+   Uses IntersectionObserver — no threshold-based polling.
    ──────────────────────────────────────────────────────────────── */
 (function initScrollReveal() {
     /* ── Section reveal ── */
@@ -200,8 +223,9 @@
     ).forEach(el => cardObserver.observe(el));
 })();
 
+
 /* ────────────────────────────────────────────────────────────────
-                  PROJECT CARD — 3D TILT on mouse move
+   9. PROJECT CARD — 3-D TILT on mouse move
    ──────────────────────────────────────────────────────────────── */
    (function initCardTilt() {
 
@@ -234,9 +258,12 @@
 
 })();
 /* ────────────────────────────────────────────────────────────────
-                         SKILL ITEMS
+   10. SKILL ITEMS — magnetic drift toward cursor
    ──────────────────────────────────────────────────────────────── */
 (function initMagneticSkills() {
+
+    // Don't enable magnetic effect on mobile/tablets
+    if (window.innerWidth <= 768) return;
 
     document.querySelectorAll('.skill-item').forEach(item => {
 
@@ -260,38 +287,50 @@
 
 
 /* ────────────────────────────────────────────────────────────────
-               SECTION HEADING GLITCH DATA
+   11. SECTION HEADING GLITCH DATA-TEXT attribute
+   Set data-text on all section h2s so the CSS ::before/::after work.
    ──────────────────────────────────────────────────────────────── */
-window.addEventListener('load', () => {
-    const name = document.querySelector('.glitch-name');
+(function initGlitchHeadings() {
+    document.querySelectorAll('section h2').forEach(h2 => {
+        h2.setAttribute('data-text', h2.textContent.trim());
+    });
+})();
 
-    if (!name) return;
+const name = document.querySelector('.glitch-name');
+if(name){
+const observer = new IntersectinObserver((entries) => {
+    if (entries[0].isIntersecting) {
+        let count=0;
+        const interval=setInterval(()=>{
 
-    function glitch() {
-        name.classList.remove('glitch-active');
-        void name.offsetWidth;
         name.classList.add('glitch-active');
 
         setTimeout(() => {
             name.classList.remove('glitch-active');
-        }, 400);
+        }, 600);
+        count++;
+        if(count>=2){
+            clearInterval(interval);
+        }
+    },900);
+
+        observer.unobserve(name);
     }
+}, { threshold: 0.5 });
 
-    setTimeout(glitch, 500);
-    setTimeout(glitch, 1500);
-    setTimeout(glitch, 2500);
-    setTimeout(glitch,3500);
+observer.observe(name);
 
-    name.addEventListener('mouseenter', glitch);
-});
+}
+
 /* ────────────────────────────────────────────────────────────────
-                        CONTACT FORM 
+   13. CONTACT FORM — basic submit prevention + neon flash feedback
    ──────────────────────────────────────────────────────────────── */
-  (function initContactForm() {
+(function initContactForm() {
     const form = document.querySelector('#contact-form form');
     if (!form) return;
 
     form.addEventListener('submit', e => {
+        e.preventDefault();
         const btn = form.querySelector('button[type="submit"]');
 
         /* Flash confirmation */
@@ -309,8 +348,10 @@ window.addEventListener('load', () => {
     });
 })();
 
+
 /* ────────────────────────────────────────────────────────────────
-                        HIGHLIGHT CARDS 
+   14. HIGHLIGHT CARDS — entrance timing tweak
+   Delay each highlight card based on data index for cascade effect.
    ──────────────────────────────────────────────────────────────── */
 (function initHighlightCascade() {
     document.querySelectorAll('.highlight-card').forEach((card, i) => {
