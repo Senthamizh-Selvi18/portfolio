@@ -986,7 +986,7 @@ footer {
 
 @media (max-width: 768px) {
     /* ── Nav ── */
-    #navbar { padding: 16px 24px; position: relative; }
+    #navbar { padding: 10px 16px; position: relative; }
     #menu-btn { display: block; }
 
     #nav-links {
@@ -1008,31 +1008,50 @@ footer {
 
     /* ── Home ── */
     #home {
-        
         flex-direction: column-reverse;
         text-align: center;
-        padding: 40px 24px 60px;
+        padding: 10px 16px 30px;
         min-height: auto;
-        padding-top: 80px;
+        gap: 20px;
     }
+    .home-image::before {
+    width: 250px;
+    height: 250px;
+}
+    .home-content{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    margin-top:0 !important;
+}
+    .home-subtitle{
+    text-align:center;
+}
+    .home-image{ margin-bottom: 20px;}
     .home-content h1 .name-line { font-size: 2.1rem; letter-spacing: 2px; }
     .home-buttons { justify-content: center; }
-    .home-desc { margin: 0 auto; text-align: center; }
+    .home-desc { margin: 0 auto; text-align: center; max-width: 320px;}
     .home-greeting { justify-content: center; }
     #hero-name::after { margin: 10px auto 0; }
-    #profile-img { width: 380px; }
+    #profile-img { width:200px; max-width :75vw; height: auto; transform: none;}
+    #hero-name{
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:6px;
+}  
     .badge-tl {
     top: 12%;
     right: 10%;
     font-size: 0.75rem;
-    padding: 6px 10px;
+    padding: 3px 10px;
 }
 
     .badge-br {
     bottom: 18%;
-    left: 10%;
+    left: -9%;
     font-size: 0.75rem;
-    padding: 6px 10px;
+    padding: 3px 10px;
 }
 
     /* ── About ── */
@@ -1042,7 +1061,7 @@ footer {
     /* ── Skills ── */
     #skills { padding: 50px 60px 100px; }
     #projects, #highlights, #certifications, #contact {
-        padding-top: 60px 24px 0;
+        padding: 60px 24px 0;
     }
 
     /* ── Projects ── */
@@ -1054,9 +1073,9 @@ footer {
 }
 
 @media (max-width: 480px) {
-    #home { padding: 24px 16px 40px; padding-top: 80px; }
+    #home { padding: 60px 16px 30px; }
     #skills { padding: 48px 16px; }
-    .name-line { font-size: 1.5rem !important; letter-spacing: 1px !important; }
+    .name-line { font-size: 1.3rem !important; line-height: 1.1; letter-spacing: 1px !important; }
 }
 
 
