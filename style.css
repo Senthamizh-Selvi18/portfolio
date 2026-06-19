@@ -465,6 +465,7 @@ h2[data-text] { position: relative; }
 }
 
 #profile-img {
+    width: 620px;
     max-width: 100%;
     height: auto;
     display: block;
